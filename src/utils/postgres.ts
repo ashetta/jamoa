@@ -17,6 +17,8 @@ class PG {
         } catch (error) {
             console.log(error)
             throw new ErrorHandle('Bazada bunday malumot yoq', 401)
+        } finally {
+            await client.release()
         }
     }
 
@@ -28,6 +30,10 @@ class PG {
         } catch (error) {
             console.log(error)
             throw new ErrorHandle('Bazada bunday malumot yoq', 401)
+        } finally {
+            await client.release()
         }
     }
 }
+
+export default new PG()
